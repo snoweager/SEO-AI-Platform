@@ -1,0 +1,3 @@
+PORT=5000
+MONGO_URI=mongodb+srv://sindhooraayyagari:buFvgPStgNQNzLfI@cluster0.ksotym2.mongodb.net/
+OPENAI_API_KEY=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

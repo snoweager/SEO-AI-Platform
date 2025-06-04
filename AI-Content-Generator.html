@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Content Generator | SEO Tools</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4263EB',secondary:'#6B7280'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+background-color: #f9fafb;
+}
+.editor-content {
+min-height: 300px;
+border: 1px solid #e5e7eb;
+}
+.toggle-checkbox:checked {
+right: 0;
+border-color: #4263EB;
+}
+.toggle-checkbox:checked + .toggle-label {
+background-color: #4263EB;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+background: #4263EB;
+border-radius: 50%;
+cursor: pointer;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.tab-active {
+color: #4263EB;
+border-bottom: 2px solid #4263EB;
+}
+</style>
+</head>
+<body class="h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-white border-b border-gray-200">
+<div class="flex items-center justify-between px-6 py-3">
+<div class="flex items-center">
+<a href="#" class="text-2xl font-['Pacifico'] text-primary mr-10">logo</a>
+<div class="relative ml-4">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<input type="text" class="pl-10 pr-4 py-2 w-80 bg-gray-50 border-none rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search tools, features, content...">
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">
+<i class="ri-notification-3-line text-gray-600"></i>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">
+<i class="ri-settings-3-line text-gray-600"></i>
+</button>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-medium">JD</div>
+<div class="ml-2">
+<p class="text-sm font-medium">John Doe</p>
+<p class="text-xs text-gray-500">Premium Plan</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+<nav class="flex-1 px-4 py-6">
+<ul class="space-y-1">
+<li>
+<a href="#" class="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-dashboard-line"></i>
+</div>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-bar-chart-line"></i>
+</div>
+<span>Analytics</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-search-line"></i>
+</div>
+<span>Keyword Research</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-line-chart-line"></i>
+</div>
+<span>SEO Reporting</span>
+</a>
+</li>
+<li>
+<a href="https://readdy.ai/home/874fd66c-05f3-4787-a1aa-f4cc1461885e/ae304330-8415-474f-82ba-7e25e36d9f29" data-readdy="true" class="flex items-center px-3 py-2 bg-primary/10 text-primary font-medium rounded-lg">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-robot-line"></i>
+</div>
+<span>AI Content</span>
+</a>
+</li>
+</ul>
+<div class="mt-8">
+<p class="px-3 text-xs font-medium text-gray-400 uppercase tracking-wider">Recent Projects</p>
+<ul class="mt-2 space-y-1">
+<li>
+<a href="#" class="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100">
+<div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+<span>E-commerce Redesign</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100">
+<div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+<span>Blog Optimization</span>
+</a>
+</li>
+<li>
+<a href="#" class="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100">
+<div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+<span>SaaS Landing Page</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="p-4 border-t border-gray-200">
+<div class="bg-gray-50 p-3 rounded-lg">
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-lg">
+<i class="ri-rocket-line"></i>
+</div>
+<p class="ml-3 text-sm font-medium">Upgrade to Pro</p>
+</div>
+<p class="mt-2 text-xs text-gray-500">Unlock advanced AI features and unlimited content generation.</p>
+<button class="mt-2 w-full py-1.5 bg-primary text-white text-sm font-medium rounded-button whitespace-nowrap">Upgrade Now</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto">
+<div class="max-w-7xl mx-auto px-6 py-8">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h1 class="text-2xl font-bold text-gray-900">AI Content Generator</h1>
+<p class="text-gray-500 mt-1">Create high-quality, SEO-optimized content with our advanced AI</p>
+</div>
+<div class="flex space-x-3">
+<button class="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-button text-sm font-medium text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-file-download-line"></i>
+</div>
+Export
+</button>
+<button class="flex items-center px-4 py-2 bg-primary text-white rounded-button text-sm font-medium hover:bg-primary/90 whitespace-nowrap">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-save-line"></i>
+</div>
+Save
+</button>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-6">
+<!-- Content Creation Form -->
+<div class="col-span-3 bg-white rounded-lg border border-gray-200 shadow-sm p-6">
+<h2 class="text-lg font-semibold text-gray-900 mb-4">Content Settings</h2>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Content Type</label>
+<div class="relative">
+<select class="w-full pl-3 pr-10 py-2.5 bg-gray-50 border-none rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary appearance-none">
+<option>Blog Post</option>
+<option>Product Description</option>
+<option>Social Media Post</option>
+<option>Email Newsletter</option>
+<option>Landing Page</option>
+<option>Meta Description</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Tone</label>
+<div class="relative">
+<select class="w-full pl-3 pr-10 py-2.5 bg-gray-50 border-none rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary appearance-none">
+<option>Professional</option>
+<option>Casual</option>
+<option>Persuasive</option>
+<option>Informative</option>
+<option>Conversational</option>
+<option>Authoritative</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Target Keywords</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-hashtag"></i>
+</div>
+</div>
+<input type="text" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border-none rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter keywords separated by commas">
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Topic</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-book-open-line"></i>
+</div>
+</div>
+<input type="text" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border-none rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter your main topic">
+</div>
+</div>
+<div class="col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1">Content Length: <span id="wordCount">800</span> words</label>
+<div class="flex items-center space-x-4">
+<input type="range" min="300" max="2000" value="800" class="w-full h-2 bg-gray-200 rounded-full appearance-none" id="lengthSlider">
+<div class="relative w-20">
+<input type="number" min="300" max="2000" value="800" class="w-full pl-3 pr-3 py-1.5 bg-gray-50 border-none rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="lengthInput">
+</div>
+</div>
+</div>
+<div class="col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1">Additional Instructions</label>
+<textarea class="w-full p-3 bg-gray-50 border-none rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary" rows="3" placeholder="Add any specific instructions or context for the AI..."></textarea>
+</div>
+<div class="col-span-2 flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<div class="flex items-center">
+<div class="relative inline-block w-10 mr-2 align-middle select-none">
+<input type="checkbox" name="toggle" id="includeImages" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked>
+<label for="includeImages" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+</div>
+<label for="includeImages" class="text-sm text-gray-700">Include image suggestions</label>
+</div>
+<div class="flex items-center">
+<div class="relative inline-block w-10 mr-2 align-middle select-none">
+<input type="checkbox" name="toggle" id="optimizeSEO" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked>
+<label for="optimizeSEO" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+</div>
+<label for="optimizeSEO" class="text-sm text-gray-700">Optimize for SEO</label>
+</div>
+<div class="flex items-center">
+<div class="relative inline-block w-10 mr-2 align-middle select-none">
+<input type="checkbox" name="toggle" id="factCheck" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer">
+<label for="factCheck" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+</div>
+<label for="factCheck" class="text-sm text-gray-700">Fact checking</label>
+</div>
+</div>
+<button class="px-6 py-2.5 bg-primary text-white rounded-button text-sm font-medium hover:bg-primary/90 whitespace-nowrap">
+Generate Content
+</button>
+</div>
+</div>
+</div>
+<!-- Content Editor -->
+<div class="col-span-2 bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+<div class="border-b border-gray-200">
+<div class="flex px-4">
+<button class="px-4 py-3 text-sm font-medium tab-active">Editor</button>
+<button class="px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-700">Split View</button>
+<button class="px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-700">Preview</button>
+</div>
+</div>
+<div class="p-4 border-b border-gray-200 bg-gray-50">
+<div class="flex items-center space-x-2">
+<button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-bold"></i>
+</div>
+</button>
+<button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-italic"></i>
+</div>
+</button>
+<button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-underline"></i>
+</div>
+</button>
+<span class="w-px h-5 bg-gray-300"></span>
+<button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-h-1"></i>
+</div>
+</button>
+<button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-h-2"></i>
+</div>
+</button>
+<span class="w-px h-5 bg-gray-300"></span>
+<button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-list-unordered"></i>
+</div>
+</button>
+<button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-list-ordered"></i>
+</div>
+</button>
+<span class="w-px h-5 bg-gray-300"></span>
+<button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-link"></i>
+</div>
+</button>
+<button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-image-add-line"></i>
+</div>
+</button>
+<div class="flex-1"></div>
+<button class="p-1.5 text-gray-600 hover:bg-gray-100 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-refresh-line"></i>
+</div>
+</button>
+</div>
+</div>
+<div class="p-6 editor-content overflow-y-auto">
+<h1 class="text-2xl font-bold mb-4">10 Essential SEO Strategies for E-commerce Websites in 2025</h1>
+<p class="mb-4">In today's competitive online marketplace, implementing effective SEO strategies is crucial for e-commerce success. With search algorithms constantly evolving and consumer behaviors shifting, staying ahead requires both technical expertise and creative approaches.</p>
+<h2 class="text-xl font-semibold mb-3 mt-6">1. Optimize for Voice Search and Conversational Queries</h2>
+<p class="mb-4">With the rise of smart speakers and voice assistants, optimizing for voice search has become essential. Voice searches tend to be longer and more conversational than typed queries. Focus on natural language patterns and question-based keywords that match how people actually speak.</p>
+<p class="mb-4">Key implementation tips:</p>
+<ul class="list-disc pl-6 mb-4">
+<li class="mb-2">Create FAQ sections that address common customer questions</li>
+<li class="mb-2">Target long-tail keywords that mirror conversational patterns</li>
+<li class="mb-2">Optimize for local search queries with location-specific information</li>
+</ul>
+<h2 class="text-xl font-semibold mb-3 mt-6">2. Enhance Product Page SEO with Rich Content</h2>
+<p class="mb-4">Product pages are the cornerstone of e-commerce SEO. Beyond basic descriptions, today's successful product pages incorporate rich, valuable content that addresses customer needs while satisfying search algorithms.</p>
+<p class="mb-4">Effective product page elements include:</p>
+<ul class="list-disc pl-6 mb-4">
+<li class="mb-2">Detailed, unique product descriptions (avoid manufacturer boilerplate)</li>
+<li class="mb-2">High-quality images with descriptive alt text</li>
+<li class="mb-2">Product videos and 360° views</li>
+<li class="mb-2">User-generated content and authentic reviews</li>
+<li class="mb-2">Related products and complementary suggestions</li>
+</ul>
+</div>
+<div class="p-3 border-t border-gray-200 bg-gray-50 text-xs text-gray-500 flex justify-between items-center">
+<div>
+Words: 187 / 800
+</div>
+<div class="flex items-center space-x-4">
+<span>Last saved: 2 minutes ago</span>
+<button class="text-primary hover:text-primary/80">
+Auto-save enabled
+</button>
+</div>
+</div>
+</div>
+<!-- AI Suggestions Panel -->
+<div class="col-span-1 bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-gray-200 flex justify-between items-center">
+<h3 class="font-medium text-gray-900">AI Suggestions</h3>
+<button class="p-1 text-gray-400 hover:text-gray-600 rounded">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-refresh-line"></i>
+</div>
+</button>
+</div>
+<div class="p-4 border-b border-gray-200 bg-gray-50">
+<div class="flex items-center justify-between mb-2">
+<h4 class="text-sm font-medium text-gray-700">Content Quality</h4>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-green-500 mr-1">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-sm font-medium text-green-500">92/100</span>
+</div>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-1.5">
+<div class="bg-green-500 h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="overflow-y-auto" style="max-height: 500px;">
+<div class="p-4 border-b border-gray-100">
+<h4 class="text-sm font-medium text-gray-700 mb-2">SEO Optimization</h4>
+<div class="space-y-3">
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-green-500 mt-0.5 flex-shrink-0">
+<i class="ri-check-line"></i>
+</div>
+<p class="text-xs text-gray-600 ml-2">Primary keyword "SEO strategies" appears in title, headings, and body text</p>
+</div>
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-500 mt-0.5 flex-shrink-0">
+<i class="ri-error-warning-line"></i>
+</div>
+<p class="text-xs text-gray-600 ml-2">Consider adding "e-commerce optimization" to improve keyword diversity</p>
+</div>
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-500 mt-0.5 flex-shrink-0">
+<i class="ri-error-warning-line"></i>
+</div>
+<p class="text-xs text-gray-600 ml-2">Add internal links to related content on your site</p>
+</div>
+</div>
+</div>
+<div class="p-4 border-b border-gray-100">
+<h4 class="text-sm font-medium text-gray-700 mb-2">Readability</h4>
+<div class="space-y-3">
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-green-500 mt-0.5 flex-shrink-0">
+<i class="ri-check-line"></i>
+</div>
+<p class="text-xs text-gray-600 ml-2">Content reads at grade level 7-8, appropriate for general audience</p>
+</div>
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-green-500 mt-0.5 flex-shrink-0">
+<i class="ri-check-line"></i>
+</div>
+<p class="text-xs text-gray-600 ml-2">Good use of bullet points and subheadings</p>
+</div>
+</div>
+</div>
+<div class="p-4 border-b border-gray-100">
+<h4 class="text-sm font-medium text-gray-700 mb-2">Phrasing Suggestions</h4>
+<div class="space-y-3">
+<div class="p-2 bg-gray-50 rounded text-xs">
+<p class="text-gray-500 mb-1">Original:</p>
+<p class="text-gray-700 mb-1">"...implementing effective SEO strategies is crucial for e-commerce success."</p>
+<p class="text-gray-500 mb-1">Suggestion:</p>
+<p class="text-primary">"...implementing effective SEO strategies is <span class="underline">essential</span> for e-commerce <span class="underline">growth and visibility</span>."</p>
+</div>
+<div class="p-2 bg-gray-50 rounded text-xs">
+<p class="text-gray-500 mb-1">Original:</p>
+<p class="text-gray-700 mb-1">"Product pages are the cornerstone of e-commerce SEO."</p>
+<p class="text-gray-500 mb-1">Suggestion:</p>
+<p class="text-primary">"Product pages serve as the <span class="underline">foundation</span> of successful e-commerce SEO."</p>
+</div>
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-sm font-medium text-gray-700 mb-2">Content Suggestions</h4>
+<div class="space-y-3">
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-blue-500 mt-0.5 flex-shrink-0">
+<i class="ri-lightbulb-line"></i>
+</div>
+<p class="text-xs text-gray-600 ml-2">Add a section about mobile optimization and Core Web Vitals</p>
+</div>
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-blue-500 mt-0.5 flex-shrink-0">
+<i class="ri-lightbulb-line"></i>
+</div>
+<p class="text-xs text-gray-600 ml-2">Include statistics about voice search usage in 2025</p>
+</div>
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-blue-500 mt-0.5 flex-shrink-0">
+<i class="ri-lightbulb-line"></i>
+</div>
+<p class="text-xs text-gray-600 ml-2">Add examples of successful e-commerce sites implementing these strategies</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Content History -->
+<div class="col-span-3 bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-gray-200 flex justify-between items-center">
+<h3 class="font-medium text-gray-900">Content History</h3>
+<div class="flex items-center space-x-2">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<div class="w-4 h-4 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<input type="text" class="pl-9 pr-4 py-1.5 w-64 bg-gray-50 border-none rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search content history...">
+</div>
+<button class="p-2 text-gray-400 hover:text-gray-600 bg-gray-50 rounded">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-filter-3-line"></i>
+</div>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SEO Score</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+<th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-gray-900">10 Essential SEO Strategies for E-commerce Websites in 2025</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-500">Blog Post</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-500">June 4, 2025</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-green-500 mr-1">
+<i class="ri-bar-chart-fill"></i>
+</div>
+<span class="text-sm text-gray-900">92/100</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+Draft
+</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<div class="flex justify-end space-x-2">
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-edit-line"></i>
+</div>
+</button>
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-file-copy-line"></i>
+</div>
+</button>
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-delete-bin-line"></i>
+</div>
+</button>
+</div>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-gray-900">Sustainable Fashion: Eco-Friendly Product Descriptions</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-500">Product Description</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-500">June 2, 2025</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-green-500 mr-1">
+<i class="ri-bar-chart-fill"></i>
+</div>
+<span class="text-sm text-gray-900">88/100</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+Published
+</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<div class="flex justify-end space-x-2">
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-edit-line"></i>
+</div>
+</button>
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-file-copy-line"></i>
+</div>
+</button>
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-delete-bin-line"></i>
+</div>
+</button>
+</div>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-gray-900">How AI is Transforming Digital Marketing in 2025</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-500">Blog Post</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-500">May 28, 2025</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-green-500 mr-1">
+<i class="ri-bar-chart-fill"></i>
+</div>
+<span class="text-sm text-gray-900">95/100</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+Published
+</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<div class="flex justify-end space-x-2">
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-edit-line"></i>
+</div>
+</button>
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-file-copy-line"></i>
+</div>
+</button>
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-delete-bin-line"></i>
+</div>
+</button>
+</div>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm font-medium text-gray-900">Ultimate Guide to Social Media Marketing for Small Businesses</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-500">Social Media Post</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="text-sm text-gray-500">May 24, 2025</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-yellow-500 mr-1">
+<i class="ri-bar-chart-fill"></i>
+</div>
+<span class="text-sm text-gray-900">76/100</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+Scheduled
+</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<div class="flex justify-end space-x-2">
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-edit-line"></i>
+</div>
+</button>
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-file-copy-line"></i>
+</div>
+</button>
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-delete-bin-line"></i>
+</div>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-3 border-t border-gray-200 bg-gray-50 flex items-center justify-between">
+<div class="text-sm text-gray-500">
+Showing 4 of 24 results
+</div>
+<div class="flex items-center space-x-2">
+<button class="p-1 text-gray-400 hover:text-gray-600 disabled:opacity-50" disabled>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-left-s-line"></i>
+</div>
+</button>
+<button class="px-3 py-1 text-xs font-medium bg-primary text-white rounded">1</button>
+<button class="px-3 py-1 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded">2</button>
+<button class="px-3 py-1 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded">3</button>
+<button class="p-1 text-gray-400 hover:text-gray-600">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-right-s-line"></i>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script id="content-length-slider">
+document.addEventListener('DOMContentLoaded', function() {
+const lengthSlider = document.getElementById('lengthSlider');
+const lengthInput = document.getElementById('lengthInput');
+const wordCount = document.getElementById('wordCount');
+if (lengthSlider && lengthInput && wordCount) {
+lengthSlider.addEventListener('input', function() {
+lengthInput.value = this.value;
+wordCount.textContent = this.value;
+});
+lengthInput.addEventListener('input', function() {
+const value = parseInt(this.value);
+if (value >= 300 && value <= 2000) {
+lengthSlider.value = value;
+wordCount.textContent = value;
+}
+});
+}
+});
+</script>
+<script id="toggle-switches">
+document.addEventListener('DOMContentLoaded', function() {
+const toggles = document.querySelectorAll('.toggle-checkbox');
+toggles.forEach(toggle => {
+toggle.addEventListener('change', function() {
+// Toggle functionality would be implemented here
+// For now, we're just logging the state change
+console.log(`${this.id} is now ${this.checked ? 'enabled' : 'disabled'}`);
+});
+});
+});
+</script>
+<script id="editor-toolbar">
+document.addEventListener('DOMContentLoaded', function() {
+const toolbarButtons = document.querySelectorAll('.p-1.5.text-gray-600');
+toolbarButtons.forEach(button => {
+button.addEventListener('click', function() {
+// Editor toolbar functionality would be implemented here
+// For now, we're just adding a visual feedback
+this.classList.add('bg-gray-100');
+setTimeout(() => {
+this.classList.remove('bg-gray-100');
+}, 200);
+});
+});
+});
+</script>
+<script id="tab-switcher">
+document.addEventListener('DOMContentLoaded', function() {
+const tabs = document.querySelectorAll('.px-4.py-3.text-sm.font-medium');
+tabs.forEach(tab => {
+tab.addEventListener('click', function() {
+// Remove active class from all tabs
+tabs.forEach(t => t.classList.remove('tab-active'));
+tabs.forEach(t => t.classList.add('text-gray-500'));
+// Add active class to clicked tab
+this.classList.add('tab-active');
+this.classList.remove('text-gray-500');
+});
+});
+});
+</script>
+</body>
+</html>
